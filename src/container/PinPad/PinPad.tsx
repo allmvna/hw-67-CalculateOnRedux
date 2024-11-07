@@ -3,6 +3,8 @@ import Grid from "@mui/material/Grid2";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
 import {checkPin, enterNumber, removeLastNumber} from "../Slices/pinSlice.ts";
+import {useEffect} from "react";
+import {toast} from "react-toastify";
 
 
 const PinPad = () => {
@@ -27,6 +29,16 @@ const PinPad = () => {
             dispatch(enterNumber(button));
         }
     };
+
+    useEffect(() => {
+        if (pin.length === 4) {
+            if (isRightPin) {
+                toast.success("Access Granted");
+            } else {
+                toast.error("Access Denied");
+            }
+        }
+    }, [isRightPin]);
 
     return (
         <>
