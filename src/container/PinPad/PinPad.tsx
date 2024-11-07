@@ -38,7 +38,7 @@ const PinPad = () => {
                 toast.error("Access Denied");
             }
         }
-    }, [isRightPin]);
+    }, [isRightPin, pin.length]);
 
     return (
         <>
